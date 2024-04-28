@@ -51,12 +51,18 @@ class Player {
         }
         let droppedItem = this.items.splice(idx, 1);
         this.currentRoom.items.push(droppedItem[0]);
-        console.log(this.currentRoom.items);
     }
 
     eatItem(itemName) {
-        if (itemName.isFood) {
-            let idx = this.items.indexOf(itemName);
+        // et name;
+        let idx;
+        for (const item of this.items) {
+            if (item.name === itemName) {
+                idx = this.items.indexOf(item);
+                break;
+            }
+        }
+        if (this.items[idx].isFood === true) {
             this.items.splice(idx, 1);
         }
     }
