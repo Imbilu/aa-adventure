@@ -49,9 +49,9 @@ class Player {
                 idx = this.items.indexOf(item);
             }
         }
-        console.log(idx);
         let droppedItem = this.items.splice(idx, 1);
-        this.currentRoom.items.concat(droppedItem);
+        this.currentRoom.items.push(droppedItem[0]);
+        console.log(this.currentRoom.items);
     }
 
     eatItem(itemName) {
