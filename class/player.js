@@ -1,3 +1,6 @@
+const fromItem = require('./item');
+const Item = fromItem.Item;
+
 class Player {
 
     constructor(name, startingRoom) {
@@ -31,25 +34,30 @@ class Player {
         }
     }
 
+    // Picks up an item from a room into the player's inventory
     takeItem(itemName) {
-
-        // Fill this in
+        let pickedItem = this.currentRoom.getItemByName(itemName);
+        this.items = this.items.concat(pickedItem);
 
     }
 
+    // Drops an item the player is holding into their current room
     dropItem(itemName) {
-
-        // Fill this in
+        let idx = this.items.indexOf(itemName);
+        let droppedItem = this.items.splice(idx, 1);
+        this.currentRoom.items.concat(droppedItem);
     }
 
     eatItem(itemName) {
-        // Fill this in
-
+        let idx = this.items.indexOf(itemName);
+        this.items.splice(idx, 1);
     }
 
+    // Retrieves an item from a player's inventory by name
     getItemByName(name) {
-
-        // Fill this in
+        let idx = this.items.indexOf(name);
+        let gotItem = this.items.splice(idx, 1);
+        return gotItem[0];
     }
 }
 

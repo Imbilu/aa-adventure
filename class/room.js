@@ -43,9 +43,10 @@ class Room {
         return this.exits[direction];
     }
 
+    // Retrieves an item from a room by name
     getItemByName(name) {
-
-        // Fill this in
+        let idx = this.items.indexOf(name);
+        return this.items.splice(idx, 1);
     }
 
 }

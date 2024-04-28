@@ -1,7 +1,11 @@
+const fromItem = require('./item');
+const Item = fromItem.Item;
 
-
-class Food {
-
+class Food extends Item{
+  constructor(name, description, food) {
+    super(name, description);
+    this.food = true;
+  }
 }
 
 module.exports = {
