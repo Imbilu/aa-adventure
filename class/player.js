@@ -43,14 +43,22 @@ class Player {
 
     // Drops an item the player is holding into their current room
     dropItem(itemName) {
-        let idx = this.items.indexOf(itemName);
+        let idx;
+        for (const item of this.items) {
+            if (item.name === itemName) {
+                idx = this.items.indexOf(item);
+            }
+        }
+        console.log(idx);
         let droppedItem = this.items.splice(idx, 1);
         this.currentRoom.items.concat(droppedItem);
     }
 
     eatItem(itemName) {
-        let idx = this.items.indexOf(itemName);
-        this.items.splice(idx, 1);
+        if (itemName.isFood) {
+            let idx = this.items.indexOf(itemName);
+            this.items.splice(idx, 1);
+        }
     }
 
     // Retrieves an item from a player's inventory by name

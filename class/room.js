@@ -45,8 +45,14 @@ class Room {
 
     // Retrieves an item from a room by name
     getItemByName(name) {
-        let idx = this.items.indexOf(name);
-        return this.items.splice(idx, 1);
+        let idx;
+        for (const item of this.items) {
+            if (item.name === name) {
+                idx = this.items.indexOf(item);
+            }
+        }
+        let gotItem = this.items.splice(idx, 1);
+        return gotItem[0];
     }
 
 }
